@@ -29,6 +29,18 @@
 
 因为原来的 Eggy UI 彻底改不动了[^1]，但我们的士气未散，又因为我不想 [BSOD-MEMZ](https://github.com/BSOD-MEMZ) 和大家多年的努力就此完结，所以我创建了[^2]此项目。
 
+## 环境
+
+**开发：**
+
+- Python：3.12.7
+- 依赖库：（见 requirement.txt ）
+
+**使用：**
+
+- 系统：Windows 11
+- 具有网络连接
+
 ## 构建
 
 1. 安装 Python 3.12.7 ，并准备好空的虚拟环境
@@ -42,6 +54,9 @@
 2. 打开安装包
 3. 跟随指引
 4. 打开桌面上的 检测安装 程序
+5. 查看安装是否完整、正确
+
+祝您使用愉快！
 
 [^1]: 原因有很多，整理较为全面的文档在[此](https://github.com/SYSTEM-LIGHT/EggyUI?tab=readme-ov-file#-eggyui-%E5%8F%91%E5%B1%95%E5%8E%86%E7%A8%8B%E4%B8%8E%E7%BB%88%E7%82%B9)
 [^2]: 见证视频在[此](https://www.bilibili.com/video/BV1TPqrBpEpG/)
