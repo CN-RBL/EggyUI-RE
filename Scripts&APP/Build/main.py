@@ -1,4 +1,11 @@
 # -*- coding: utf-8 -*-
+import rich.console
+from rich.logging import RichHandler
+import argparse
+import warnings
+import logging
+
+warnings.filterwarnings("ignore")
 
 eu_logo = """[bold]
 [yellow]                                                     .+:        
@@ -66,8 +73,24 @@ eure_build = """
                                                                                 
 """
 
-import rich
 
 def main():
-    rich.print(eu_logo)
-    rich.print(eure_build)
+    logging.basicConfig(
+        level=logging.DEBUG,
+        format="[%(asctime)s] %(message)s",
+        datefmt="%Y/%m/%d %I:%M:%S",
+        handlers=[RichHandler(locals_max_length=None, locals_max_string=None)]
+    )
+    log = logging.getLogger("rich")
+
+    console = rich.console.Console()
+    console.print(eu_logo)
+    console.print(eure_build)
+
+    log.debug("初始化console完成")
+
+    parser = argparse.ArgumentParser(description="Eggy UI RE Build Tool")
+    parser.add_argument("build_config", help="编译配置")
+    args = parser.parse_args()
+
+    log.debug(f"获取参数：build_config，参数值为{args.build_config}")
