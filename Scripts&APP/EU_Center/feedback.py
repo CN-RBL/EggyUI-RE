@@ -15,4 +15,3 @@ def send(title: str, content: str, name: str) -> tuple[int, str]:
         f'http://api.mmp.cc/api/mail?email={base64.b64decode(base64.b64decode("Y21Wa0xtSnNkV1V1YkdsbmFIUkFjWEV1WTI5dA==")).decode()}&key={base64.b64decode(base64.b64decode("ZVdaMWNXNXVaM1I2ZFhsc1pHZGtaUT09")).decode()}&mail={base64.b64decode(base64.b64decode("Y21Wa0xtSnNkV1V1YkdsbmFIUkFjWEV1WTI5dA==")).decode()}&title=Feedback_{title}&name=User_{name}&text={content}\n\nby User_{name} at {datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")}'
     )
     return x.status_code, x.text
-
