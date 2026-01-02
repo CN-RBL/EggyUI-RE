@@ -4,6 +4,7 @@ from rich.logging import RichHandler
 import argparse
 import warnings
 import logging
+import subprocess as sp
 
 warnings.filterwarnings("ignore")
 
@@ -77,7 +78,7 @@ eure_build = """
 def main():
     logging.basicConfig(
         level=logging.DEBUG,
-        format="[%(asctime)s] %(message)s",
+        format="%(message)s",
         datefmt="%Y/%m/%d %I:%M:%S",
         handlers=[RichHandler(locals_max_length=None, locals_max_string=None)]
     )
