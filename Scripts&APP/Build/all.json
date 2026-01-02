@@ -1,6 +1,10 @@
 {
     "config_name": "all",
     "config_description": "EU-RE ALL BUILD",
-    "mode": "all_build",
-    "async": true
+    "async": true,
+    "M1": {
+        "name": "TEST",
+        "tool": "nuitka",
+        "cmd": "-V"
+    }
 }
