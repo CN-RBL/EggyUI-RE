@@ -105,6 +105,7 @@ def main() -> None:
     with open(config_path, "rt", encoding="utf-8") as f:
         log.debug(f"编译配置文件路径：{config_path}")
         config: dict = json.load(f)
+        mxs: list = []  # 存放配置项
         log.info(f"编译配置文件加载完成")
         log.info(f"名称：{config["config_name"]}\n"
                  f"描述：{config["config_description"]}\n"
@@ -113,6 +114,7 @@ def main() -> None:
             _: int = 1
             while True:
                 log.debug(f"第{_}个配置项：{config[f"M{_}"]}")
+                mxs.append(config[f"M{_}"])
                 _ += 1
-        except KeyError as e:
+        except KeyError:
             pass
