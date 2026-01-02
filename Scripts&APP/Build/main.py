@@ -95,3 +95,4 @@ def main():
     args = parser.parse_args()
 
     log.debug(f"获取参数：build_config，参数值为{args.build_config}")
+    log.info("准备编译...")

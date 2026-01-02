@@ -1,0 +1,6 @@
+{
+    "config_name": "all",
+    "config_description": "EU-RE ALL BUILD",
+    "mode": "all_build",
+    "async": true
+}
