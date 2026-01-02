@@ -100,6 +100,7 @@ def main() -> None:
     log.debug(f"获取参数：build_config，参数值为{args.build_config}")
     log.info("准备编译...")
 
+    # 编译文件需放在同级目录下
     config_path: str = f"{os.path.dirname(os.path.realpath(__file__))}/{args.build_config}.json"
     with open(config_path, "rt", encoding="utf-8") as f:
         log.debug(f"编译配置文件路径：{config_path}")

@@ -1,0 +1,13 @@
+{
+    "config_name": "NAME", // 配置文件名称 string
+    "config_description": "DESCRIPTION", // 配置文件备注 string
+    "async": , // 异步编译设置 bool
+    "M1": { // 编译配置项1（名称格式：M{i}，有序）} string
+        "name": "M1NAME", // 此配置项的名称
+        "tool": "nuitka/pyinstaller", // 此配置项调用的工具（其中选一个） string
+        "cmd": ["--CMD_ARG1", "-CMD_ARG2"] // 调用工具的命令行 list
+    }
+    "M2": { // 同理
+        ... // 和上面一样
+    }
+}

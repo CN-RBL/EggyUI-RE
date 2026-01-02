@@ -5,6 +5,6 @@
     "M1": {
         "name": "TEST",
         "tool": "nuitka",
-        "cmd": "-V"
+        "cmd": ["-V"]
     }
 }
