@@ -105,16 +105,21 @@ def main() -> None:
     with open(config_path, "rt", encoding="utf-8") as f:
         log.debug(f"编译配置文件路径：{config_path}")
         config: dict = json.load(f)
-        mxs: list = []  # 存放配置项
+        mxs: list[str] = []  # 存放配置项
         log.info(f"编译配置文件加载完成")
         log.info(f"名称：{config["config_name"]}\n"
                  f"描述：{config["config_description"]}\n"
-                 f"异步：{"是" if config["async"] else "否"}")
+                 f"异步编译：{"是" if config["async"] else "否"}")
         try:
             _: int = 1
             while True:
-                log.debug(f"第{_}个配置项：{config[f"M{_}"]}")
-                mxs.append(config[f"M{_}"])
+                log.info(f"第{_}个配置项：\n"
+                         f"名称：{config[f"M{_}"]["name"]}\n"
+                         f"描述：{config[f"M{_}"]["description"]}\n")
+                mxs.append(f"M{_}:{config[f"M{_}"]["tool"]}:{config[f"M{_}"]["cmd"]}")
                 _ += 1
         except KeyError:
-            pass
+            log.debug(f"MXS: {mxs}")
+        log.debug("完成遍历，准备编译...")
+        for mx in mxs:
+            log.debug(mx.rsplit(":"))

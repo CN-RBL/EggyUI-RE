@@ -3,7 +3,8 @@
     "config_description": "EU-RE ALL BUILD",
     "async": true,
     "M1": {
-        "name": "TEST",
+        "name": "Build Build/build.py",
+        "description": "EU-RE Build Tools",
         "tool": "nuitka",
         "cmd": ["-V"]
     }
