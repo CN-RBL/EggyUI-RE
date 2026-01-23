@@ -7,6 +7,7 @@ import logging
 import subprocess as sp
 import json
 import os
+from threading import Thread
 
 warnings.filterwarnings("ignore")
 
@@ -68,7 +69,7 @@ eu_logo = """[bold]
                                                                 
                                                                                                                                                                                          
 """
-eure_build = """
+eure_build = r"""
   _____   _   _           ____    _____     ____    _   _   ___   _       ____  
  | ____| | | | |         |  _ \  | ____|   | __ )  | | | | |_ _| | |     |  _ \ 
  |  _|   | | | |  _____  | |_) | |  _|     |  _ \  | | | |  | |  | |     | | | |
@@ -77,6 +78,11 @@ eure_build = """
                                                                                 
 """
 
+
+def build_main(name: str, tool: str, args: list, log: logging.Logger) -> None:
+    with sp.Popen([f"python -m {tool}"]+args, encoding="utf-8", ) as p:
+        for t in p.stdout:
+            log.info(f"[{name}] [{tool.capitalize()}构建中] {t})
 
 def main() -> None:
     logging.basicConfig(
@@ -116,10 +122,11 @@ def main() -> None:
                 log.info(f"第{_}个配置项：\n"
                          f"名称：{config[f"M{_}"]["name"]}\n"
                          f"描述：{config[f"M{_}"]["description"]}\n")
-                mxs.append(f"M{_}:{config[f"M{_}"]["tool"]}:{config[f"M{_}"]["cmd"]}")
+                mxs.append(f"M{_}:{config[f"M{_}"]["name"]}:{config[f"M{_}"]["tool"]}:{config[f"M{_}"]["cmd"]}")
                 _ += 1
         except KeyError:
             log.debug(f"MXS: {mxs}")
         log.debug("完成遍历，准备编译...")
         for mx in mxs:
-            log.debug(mx.rsplit(":"))
+            mx = mx.strip(":")
+            build_main(f"{mx[1]} ({mx[0]})", mx[2], mx[3], log)
