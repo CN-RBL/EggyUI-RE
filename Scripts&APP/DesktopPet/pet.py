@@ -2,7 +2,7 @@
 
 from PyQt6.QtWidgets import QWidget, QLabel
 from PyQt6.QtCore import Qt
-from PyQt6.QtGui import QIcon, QPixmap
+from PyQt6.QtGui import QIcon, QPixmap, QGuiApplication
 from qfluentwidgets import RoundMenu, Action
 from util import get_path
 
@@ -25,8 +25,10 @@ class Pet(QWidget):
         super().__init__()
         self.setWindowTitle("Your Eggy")
         self.setWindowIcon(QIcon(get_path(__file__, "icon.ico")))
-        self.setWindowFlag(self.windowFlags() | Qt.WindowType.FramelessWindowHint)
+        self.setWindowFlag(self.windowFlags() | Qt.WindowType.FramelessWindowHint | Qt.WindowType.WindowStaysOnTopHint)
         self.setFixedSize(350, 350)
+        self.move(QGuiApplication.primaryScreen().geometry().width() - 350,
+                  QGuiApplication.primaryScreen().geometry().height() - 350)
 
         self.img = QPixmap(get_path(__file__, "test.png"))
         self.label = QLabel(self)
