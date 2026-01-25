@@ -1,11 +1,12 @@
 # -*- coding: utf-8 -*-
 
-from PyQt6.QtWidgets import QSystemTrayIcon, QWidget
+from PyQt6.QtWidgets import QSystemTrayIcon
 from PyQt6.QtGui import QIcon
+from pet import Pet
 from qfluentwidgets import SystemTrayMenu, Action
 
 class Tray(QSystemTrayIcon):
-    def __init__(self, parent: QWidget=None):
+    def __init__(self, parent: Pet=None):
         super().__init__(parent=parent)
         self.setIcon(parent.windowIcon())
 
