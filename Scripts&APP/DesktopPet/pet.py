@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 
-from PyQt6.QtWidgets import QWidget
+from PyQt6.QtWidgets import QWidget, QLabel
 from PyQt6.QtCore import Qt
-from PyQt6.QtGui import QIcon
+from PyQt6.QtGui import QIcon, QPixmap
+from qfluentwidgets import RoundMenu
 from util import get_path
 
 class Emoticon_Widget(QWidget):
@@ -27,11 +28,30 @@ class Pet(QWidget):
         self.setWindowFlag(self.windowFlags() | Qt.WindowType.FramelessWindowHint)
         self.setFixedSize(350, 350)
 
+        self.img = QPixmap(get_path(__file__, "test.png"))
+        self.label = QLabel(self)
+        self.label.setPixmap(self.img)
+        self.label.show()
+        self.setCentralWidget(self.label)
+
+    def show_menu(self, pos):
+        """
+        通过此方法显示右键菜单
+        :param pos: 菜单显示位置
+        """
+        menu = RoundMenu(self)
+        menu.addAction("Talk", self.talk)
+        menu.addAction("Settings", self.settings)
+        menu.addAction("Exit", self.exit)
+        menu.exec(pos)
+
+
     def talk(self):
         """
         通过此方法进入AI讨论页面
         """
         pass
-    def settings(self): pass
+    def settings(self):
+        pass
     def exit(self):
         exit()
