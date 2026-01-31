@@ -1,0 +1,7 @@
+{
+    "actions" : [
+        "wait",
+        "walk_l",
+        "walk_r"
+    ]
+}

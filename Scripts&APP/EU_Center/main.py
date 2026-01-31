@@ -18,7 +18,8 @@ class MainWindow(MSFluentWindow):
 
     def initUI(self):
         self.addSubInterface(MainInterface(), FluentIcon("Home"), "Home")
-        self.addSubInterface(GLO_PMInterface(), FluentIcon("Application"), "GLO_PM")
+        self.addSubInterface(GLO_PMInterface(), FluentIcon("Applicati"
+                                                           "n"), "GLO_PM")
         self.addSubInterface(FeedbackInterface(), FluentIcon("Feedback"), "Feedback", position=NavigationItemPosition.BOTTOM)
         self.addSubInterface(SettingInterface(), FluentIcon("Setting"), "Setting", position=NavigationItemPosition.BOTTOM)
 
