@@ -2,6 +2,12 @@
     "actions" : [
         "wait",
         "walk_l",
-        "walk_r"
+        "walk_r",
+        "roll_l",
+        "roll_r",
+        "jump_c",
+        "jump_l",
+        "jump_r",
+        "sit"
     ]
 }
