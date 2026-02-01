@@ -82,7 +82,7 @@ eure_build = r"""
 def build_main(name: str, tool: str, args: list, log: logging.Logger) -> None:
     with sp.Popen([f"python -m {tool}"]+args, encoding="utf-8", ) as p:
         for t in p.stdout:
-            log.info(f"[{name}] [{tool.capitalize()}构建中] {t})
+            log.info(f"[{name}] [{tool.capitalize()}构建中] {t}")
 
 def main() -> None:
     logging.basicConfig(
