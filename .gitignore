@@ -15,7 +15,8 @@ venv/
 
 # Ignore Editor directories
 .vscode/
+.vs/
 .idea/
 
-# Ignore Visual Studio directory
-.vs/
+# Ignore Resource directories
+Resource/
