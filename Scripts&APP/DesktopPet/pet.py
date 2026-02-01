@@ -5,13 +5,14 @@ from PyQt6.QtCore import Qt
 from PyQt6.QtGui import QIcon, QPixmap
 from qfluentwidgets import RoundMenu, Action
 from util import get_path
+import json
 
 
-class Emoticon_Widget(QWidget):
+class EmoticonWidget(QWidget):
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("")
-        self.setWindowFlag(Qt.WindowType.FramelessWindowHint)
+        self.setWindowTitle("Your Eggy - Emoticon")
+        self.setWindowFlag(Qt.WindowType.FramelessWindowHint | Qt.WindowType.WindowStaysOnTopHint)
         self.setFixedSize(100, 100)
 
     def set_emoticon(self, emoticon_path: str) -> None:
@@ -20,6 +21,12 @@ class Emoticon_Widget(QWidget):
         :param emoticon_path: 表情图片路径
         """
         pass
+
+
+class TalkWidget(QWidget):
+    def __init__(self):
+        super().__init__()
+        self.setWindowTitle("Your Eggy - Talk")
 
 
 class Pet(QWidget):

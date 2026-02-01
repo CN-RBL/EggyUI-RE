@@ -3,9 +3,11 @@
 from PyQt6.QtWidgets import QSystemTrayIcon, QWidget
 from PyQt6.QtGui import QIcon
 from qfluentwidgets import SystemTrayMenu, Action
+from pet import Pet
+
 
 class Tray(QSystemTrayIcon):
-    def __init__(self, parent: QWidget=None):
+    def __init__(self, parent: Pet = None):
         super().__init__(parent=parent)
         self.setIcon(parent.windowIcon())
 
@@ -18,7 +20,7 @@ class Tray(QSystemTrayIcon):
         ])
 
         self.setContextMenu(self.menu)
-    
+
     def switchVisibility(self):
         if self.parent().isVisible():
             self.parent().hide()
