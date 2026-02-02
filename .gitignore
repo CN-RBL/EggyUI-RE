@@ -20,3 +20,6 @@ venv/
 
 # Ignore Resource directories
 Resource/
+
+# Ignore LIVE directories
+live/
