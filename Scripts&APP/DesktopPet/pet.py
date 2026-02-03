@@ -6,6 +6,8 @@ from PyQt6.QtGui import QIcon, QPixmap
 from qfluentwidgets import RoundMenu, Action
 from util import get_path
 
+# 桌宠
+
 
 class EmoticonWidget(QWidget):
     def __init__(self):

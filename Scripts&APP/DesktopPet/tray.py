@@ -4,6 +4,8 @@ from PyQt6.QtWidgets import QSystemTrayIcon
 from qfluentwidgets import SystemTrayMenu, Action
 from pet import Pet
 
+# 托盘
+
 
 class Tray(QSystemTrayIcon):
     def __init__(self, parent: Pet = None):
