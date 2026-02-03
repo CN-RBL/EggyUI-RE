@@ -5,7 +5,6 @@ from PyQt6.QtCore import Qt
 from PyQt6.QtGui import QIcon, QPixmap
 from qfluentwidgets import RoundMenu, Action
 from util import get_path
-import json
 
 
 class EmoticonWidget(QWidget):
@@ -53,9 +52,9 @@ class Pet(QWidget):
         """
         menu = RoundMenu(parent=self)
         menu.addActions([
-            Action("Talk", triggered=self.talk),
-            Action("Settings", triggered=self.settings),
-            Action("Exit", triggered=self.exit)])
+            Action(text="Talk", triggered=self.talk),
+            Action(text="Settings", triggered=self.settings),
+            Action(text="Exit", triggered=self.close)])
         menu.exec(self.mapToGlobal(pos))
 
     def talk(self) -> None:
@@ -66,6 +65,3 @@ class Pet(QWidget):
 
     def settings(self) -> None:
         pass
-
-    def exit(self) -> None:
-        self.close()

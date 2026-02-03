@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from PyQt6.QtWidgets import QSystemTrayIcon, QWidget
-from PyQt6.QtGui import QIcon
+from PyQt6.QtWidgets import QSystemTrayIcon
 from qfluentwidgets import SystemTrayMenu, Action
 from pet import Pet
 
@@ -13,10 +12,10 @@ class Tray(QSystemTrayIcon):
 
         self.menu = SystemTrayMenu(parent=parent)
         self.menu.addActions([
-            Action("Show/Hide", triggered=self.switchVisibility),
-            Action("Talk", triggered=parent.talk),  # 与Pet交流（互动？）
-            Action("Settings", triggered=parent.settings),
-            Action("Exit", triggered=parent.exit)
+            Action(text="Show/Hide", triggered=self.switchVisibility),
+            Action(text="Talk", triggered=parent.talk),  # 与Pet交流（互动？）
+            Action(text="Settings", triggered=parent.settings),
+            Action(text="Exit", triggered=parent.close)
         ])
 
         self.setContextMenu(self.menu)
