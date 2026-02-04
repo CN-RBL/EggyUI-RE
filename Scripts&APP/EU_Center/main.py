@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 import sys
 
-from PyQt6.QtCore import QSize
+from PyQt6.QtCore import QSize, Qt
 from PyQt6.QtGui import QIcon
-from PyQt6.QtWidgets import QApplication, QFrame, QVBoxLayout
+from PyQt6.QtWidgets import QApplication, QFrame, QVBoxLayout, QSizePolicy
 from qfluentwidgets import *
 
 
@@ -18,8 +18,7 @@ class MainWindow(MSFluentWindow):
 
     def initUI(self):
         self.addSubInterface(MainInterface(), FluentIcon("Home"), "Home")
-        self.addSubInterface(GLO_PMInterface(), FluentIcon("Applicati"
-                                                           "n"), "GLO_PM")
+        self.addSubInterface(GLO_PMInterface(), FluentIcon("Application"), "GLO_PM")
         self.addSubInterface(FeedbackInterface(), FluentIcon("Feedback"), "Feedback", position=NavigationItemPosition.BOTTOM)
         self.addSubInterface(SettingInterface(), FluentIcon("Setting"), "Setting", position=NavigationItemPosition.BOTTOM)
 
@@ -32,12 +31,14 @@ class MainInterface(QFrame):
 
     def initInterface(self):
         mainLayout = QVBoxLayout(self)
+        mainLayout.setAlignment(Qt.AlignmentFlag.AlignTop)
 
         news_c = HeaderCardWidget(self)
         news_c.setTitle("News")
         no_news_l = BodyLabel(news_c)
         no_news_l.setText("No News")
         news_c.viewLayout.addWidget(no_news_l)
+        news_c.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Fixed)
 
         mainLayout.addWidget(news_c)
 
@@ -46,6 +47,7 @@ class MainInterface(QFrame):
         no_info_l = BodyLabel(info_c)
         no_info_l.setText("No Info")
         info_c.viewLayout.addWidget(no_info_l)
+        info_c.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Fixed)
 
         mainLayout.addWidget(info_c)
 
