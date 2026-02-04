@@ -22,7 +22,7 @@ class Tray(QSystemTrayIcon):
 
         self.setContextMenu(self.menu)
 
-    def switchVisibility(self):
+    def switchVisibility(self) -> None:
         if self.parent().isVisible():
             self.parent().hide()
         else:

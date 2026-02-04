@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-
+from PyQt6.QtCore import QPointF
 from PyQt6.QtWidgets import QWidget, QLabel
 from PyQt6.QtCore import Qt
 from PyQt6.QtGui import QIcon, QPixmap
@@ -10,24 +10,31 @@ from util import get_path
 
 
 class EmoticonWidget(QWidget):
-    def __init__(self):
+    def __init__(self, parent: "Pet" = None):
         super().__init__()
         self.setWindowTitle("Your Eggy - Emoticon")
-        self.setWindowFlag(Qt.WindowType.FramelessWindowHint | Qt.WindowType.WindowStaysOnTopHint)
+        self.setWindowIcon(parent.windowIcon())
+        self.setWindowFlag(parent.windowFlags())
+        self.setAttribute(Qt.WidgetAttribute.WA_TranslucentBackground)
         self.setFixedSize(100, 100)
 
-    def set_emoticon(self, emoticon_path: str) -> None:
+    def set_emoticon(self, emoticon: str) -> None:
         """
         通过此方法设置表情气泡中的表情图片
-        :param emoticon_path: 表情图片路径
+        :param emoticon: 表情名称
         """
         pass
 
 
 class TalkWidget(QWidget):
-    def __init__(self):
+    def __init__(self, parent: "Pet" = None):
         super().__init__()
         self.setWindowTitle("Your Eggy - Talk")
+        self.setWindowIcon(parent.windowIcon())
+        self.setWindowFlag(Qt.WindowType.WindowStaysOnTopHint)
+        # self.setAttribute(Qt.WidgetAttribute.WA_TranslucentBackground)
+
+        # TODO: 开发日2：完成界面
 
 
 class Pet(QWidget):
@@ -35,7 +42,8 @@ class Pet(QWidget):
         super().__init__()
         self.setWindowTitle("Your Eggy")
         self.setWindowIcon(QIcon(get_path(__file__, "icon.ico")))
-        self.setWindowFlag(self.windowFlags() | Qt.WindowType.FramelessWindowHint)
+        self.setWindowFlag(Qt.WindowType.FramelessWindowHint | Qt.WindowType.WindowStaysOnTopHint)
+        self.setAttribute(Qt.WidgetAttribute.WA_TranslucentBackground)
         self.setFixedSize(350, 350)
 
         self.img = QPixmap(get_path(__file__, "imgs/wait.png"))
@@ -45,7 +53,6 @@ class Pet(QWidget):
         self.label.setContextMenuPolicy(Qt.ContextMenuPolicy.CustomContextMenu)
         self.label.customContextMenuRequested.connect(self.show_menu)
         self.label.show()
-        # self.setCentralWidget(self.label)
 
     def show_menu(self, pos) -> None:
         """
@@ -63,7 +70,10 @@ class Pet(QWidget):
         """
         通过此方法进入AI讨论页面
         """
-        pass
+        self.talk_win = TalkWidget(parent=self)
+        self.talk_win.show()
+
 
     def settings(self) -> None:
+        # TODO: idea: jump to center
         pass
