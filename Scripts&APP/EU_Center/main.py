@@ -3,7 +3,7 @@ import sys
 
 from PyQt6.QtCore import QSize, Qt
 from PyQt6.QtGui import QIcon
-from PyQt6.QtWidgets import QApplication, QFrame, QVBoxLayout, QSizePolicy
+from PyQt6.QtWidgets import QApplication, QFrame, QVBoxLayout, QSizePolicy, QListWidgetItem
 from qfluentwidgets import *
 
 
@@ -18,7 +18,7 @@ class MainWindow(MSFluentWindow):
 
     def initUI(self):
         self.addSubInterface(MainInterface(), FluentIcon("Home"), "Home")
-        self.addSubInterface(GLO_PMInterface(), FluentIcon("Application"), "GLO_PM")
+        self.addSubInterface(GloPMInterface(), FluentIcon("Application"), "GLO PM")
         self.addSubInterface(FeedbackInterface(), FluentIcon("Feedback"), "Feedback", position=NavigationItemPosition.BOTTOM)
         self.addSubInterface(SettingInterface(), FluentIcon("Setting"), "Setting", position=NavigationItemPosition.BOTTOM)
 
@@ -52,13 +52,29 @@ class MainInterface(QFrame):
         mainLayout.addWidget(info_c)
 
 
-class GLO_PMInterface(QFrame):
+class GloPMInterface(QFrame):
     def __init__(self):
         super().__init__()
         self.setObjectName("GLO_PMInterface")
 
+        self.initInterface()
+
     def initInterface(self):
-        pass
+        kit_list = ListWidget(self)
+
+        class KitDownloadItem(QListWidgetItem):
+            def __init__(self, text):
+                super().__init__(text)
+
+            def paint(self, painter, option, index):
+                painter.drawRect(option.rect)
+                painter.drawText(option.rect, Qt.AlignmentFlag.AlignCenter, self.text())
+
+        kit_list.addItem(KitDownloadItem("Eggy Desktop Pet"))
+        kit_list.addItem(KitDownloadItem("But"))
+        kit_list.addItem(KitDownloadItem("NeedMore!EggyKit!"))
+        kit_list.sortItems(order=Qt.SortOrder.AscendingOrder)
+        kit_list.show()
 
 
 class FeedbackInterface(QFrame):
@@ -69,13 +85,24 @@ class FeedbackInterface(QFrame):
         self.initInterface()
 
     def initInterface(self):
-        pass
+        mainLayout = QVBoxLayout(self)
+        mainLayout.setAlignment(Qt.AlignmentFlag.AlignTop)
+
+        title = TitleLabel()
+        title.setText("反馈")
+        mainLayout.addWidget(title)
+
+        sub_title = SubtitleLabel()
+        sub_title.setText("Eggy！反馈信息直达EggyUI(-RE)团队，请你放心啦！")
+        mainLayout.addWidget(sub_title)
 
 
 class SettingInterface(QFrame):
     def __init__(self):
         super().__init__()
         self.setObjectName("SettingInterface")
+
+        self.initInterface()
 
     def initInterface(self):
         pass
