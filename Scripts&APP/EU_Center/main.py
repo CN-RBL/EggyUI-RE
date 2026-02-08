@@ -30,7 +30,7 @@ class MainInterface(QFrame):
         self.initInterface()
 
     def initInterface(self):
-        mainLayout = QVBoxLayout(self)
+        mainLayout = VBoxLayout(self)
         mainLayout.setAlignment(Qt.AlignmentFlag.AlignTop)
 
         news_c = HeaderCardWidget(self)
@@ -60,6 +60,8 @@ class GloPMInterface(QFrame):
         self.initInterface()
 
     def initInterface(self):
+        mainLayout = VBoxLayout(self)
+
         kit_list = ListWidget(self)
 
         class KitDownloadItem(QListWidgetItem):
@@ -69,12 +71,14 @@ class GloPMInterface(QFrame):
             def paint(self, painter, option, index):
                 painter.drawRect(option.rect)
                 painter.drawText(option.rect, Qt.AlignmentFlag.AlignCenter, self.text())
+                
 
         kit_list.addItem(KitDownloadItem("Eggy Desktop Pet"))
         kit_list.addItem(KitDownloadItem("But"))
         kit_list.addItem(KitDownloadItem("NeedMore!EggyKit!"))
         kit_list.sortItems(order=Qt.SortOrder.AscendingOrder)
         kit_list.show()
+        mainLayout.addWidget(kit_list)
 
 
 class FeedbackInterface(QFrame):
@@ -85,7 +89,7 @@ class FeedbackInterface(QFrame):
         self.initInterface()
 
     def initInterface(self):
-        mainLayout = QVBoxLayout(self)
+        mainLayout = VBoxLayout(self)
         mainLayout.setAlignment(Qt.AlignmentFlag.AlignTop)
 
         title = TitleLabel()
