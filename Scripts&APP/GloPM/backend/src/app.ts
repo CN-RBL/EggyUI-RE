@@ -24,7 +24,7 @@ app.get('/', (c) => c.text('GloPM Backend are running!'));
     app.route('/api/packages', packageRouter);
 
     // 启动服务器
-    const port = PORT || 9009;
+    const port = PORT || 2357;
     serve({
       fetch: app.fetch,
       port: parseInt(port as string)

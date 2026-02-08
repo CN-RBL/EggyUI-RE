@@ -30,7 +30,7 @@ console = Console()
 CONFIG_DIR = Path.home() / ".glopm"
 CONFIG_FILE = CONFIG_DIR / "config.ini"
 CACHE_DIR = CONFIG_DIR / "cache"
-DEFAULT_API_URL = "https://127.0.0.1:9009/api"
+DEFAULT_API_URL = "https://171.80.2.129:2357/api"
 
 # 应用信息
 APP_NAME = "GloPM"
