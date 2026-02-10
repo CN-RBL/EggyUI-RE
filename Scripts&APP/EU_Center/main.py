@@ -3,7 +3,7 @@ import sys
 
 from PyQt6.QtCore import QSize, Qt
 from PyQt6.QtGui import QIcon
-from PyQt6.QtWidgets import QApplication, QFrame, QVBoxLayout, QSizePolicy, QListWidgetItem
+from PyQt6.QtWidgets import QApplication, QFrame, QSizePolicy, QListWidgetItem
 from qfluentwidgets import *
 
 
@@ -19,8 +19,10 @@ class MainWindow(MSFluentWindow):
     def initUI(self):
         self.addSubInterface(MainInterface(), FluentIcon("Home"), "Home")
         self.addSubInterface(GloPMInterface(), FluentIcon("Application"), "GLO PM")
-        self.addSubInterface(FeedbackInterface(), FluentIcon("Feedback"), "Feedback", position=NavigationItemPosition.BOTTOM)
-        self.addSubInterface(SettingInterface(), FluentIcon("Setting"), "Setting", position=NavigationItemPosition.BOTTOM)
+        self.addSubInterface(FeedbackInterface(), FluentIcon("Feedback"), "Feedback",
+                             position=NavigationItemPosition.BOTTOM)
+        self.addSubInterface(SettingInterface(), FluentIcon("Setting"), "Setting",
+                             position=NavigationItemPosition.BOTTOM)
 
 
 class MainInterface(QFrame):
@@ -71,7 +73,6 @@ class GloPMInterface(QFrame):
             def paint(self, painter, option, index):
                 painter.drawRect(option.rect)
                 painter.drawText(option.rect, Qt.AlignmentFlag.AlignCenter, self.text())
-                
 
         kit_list.addItem(KitDownloadItem("Eggy Desktop Pet"))
         kit_list.addItem(KitDownloadItem("But"))
@@ -92,13 +93,12 @@ class FeedbackInterface(QFrame):
         mainLayout = VBoxLayout(self)
         mainLayout.setAlignment(Qt.AlignmentFlag.AlignTop)
 
-        title = TitleLabel()
-        title.setText("反馈")
-        mainLayout.addWidget(title)
+        title_label = BodyLabel()
+        title_label.setText("标题")
+        mainLayout.addWidget(title_label)
 
-        sub_title = SubtitleLabel()
-        sub_title.setText("Eggy！反馈信息直达EggyUI(-RE)团队，请你放心啦！")
-        mainLayout.addWidget(sub_title)
+        title_input = TextEdit(self)
+        mainLayout.addWidget(title_input)
 
 
 class SettingInterface(QFrame):
