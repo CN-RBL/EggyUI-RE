@@ -5,7 +5,7 @@ from PyQt6.QtCore import QSize, Qt
 from PyQt6.QtGui import QIcon
 from PyQt6.QtWidgets import QApplication, QFrame, QSizePolicy, QListWidgetItem
 from qfluentwidgets import *
-
+import requests
 
 class MainWindow(MSFluentWindow):
     def __init__(self, parent=None):
