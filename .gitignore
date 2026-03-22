@@ -23,3 +23,6 @@ Resource/
 
 # Ignore LIVE directories
 live/
+
+# Ignore Build files
+dist/

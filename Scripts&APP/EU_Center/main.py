@@ -1,18 +1,22 @@
 # -*- coding: utf-8 -*-
-import sys
 
+import platform
+import sys
 from PyQt6.QtCore import QSize, Qt
 from PyQt6.QtGui import QIcon
-from PyQt6.QtWidgets import QApplication, QFrame, QSizePolicy, QListWidgetItem
+from PyQt6.QtWidgets import QApplication, QFrame, QSizePolicy, QListWidgetItem, QTableWidgetItem, QAbstractItemView, \
+    QHeaderView
 from qfluentwidgets import *
 import requests
+
+__version__ = "vRE 1.0.0.Beta"
 
 
 class MainWindow(MSFluentWindow):
     def __init__(self, parent=None):
         super().__init__(parent)
         self.setWindowTitle("EggyUI-RE Center")
-        self.setWindowIcon(QIcon("icon.png"))
+        self.setWindowIcon(QIcon("icon.ico"))
         self.setMinimumSize(QSize(800, 600))
         setThemeColor(QColor("#fed71d"))
         self.initUI()
@@ -47,10 +51,27 @@ class MainInterface(QFrame):
 
         info_c = HeaderCardWidget(self)
         info_c.setTitle("Info")
-        no_info_l = BodyLabel(info_c)
-        no_info_l.setText("No Info")
-        info_c.viewLayout.addWidget(no_info_l)
         info_c.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Fixed)
+        infos: list = [["操作系统版本", f"{platform.system()} {platform.release()}"], ["Python 版本", platform.python_version()], ["Center 版本", __version__]]
+        if infos:
+            table = TableWidget(self)
+            table.setBorderVisible(True)
+            table.setBorderRadius(8)
+            table.setWordWrap(False)
+            table.setRowCount(4)
+            table.setColumnCount(2)
+            table.setHorizontalHeaderLabels(["项目", "版本"])
+            table.horizontalHeader().setSectionResizeMode(QHeaderView.ResizeMode.Stretch)
+            table.setEditTriggers(QAbstractItemView.EditTrigger.NoEditTriggers)
+            for i, info in enumerate(infos):
+                for j in range(2):
+                    table.setItem(i, j, QTableWidgetItem(info[j]))
+            table.verticalHeader().hide()
+            info_c.viewLayout.addWidget(table)
+        else:
+            no_info_l = BodyLabel(info_c)
+            no_info_l.setText("No Info")
+            info_c.viewLayout.addWidget(no_info_l)
 
         mainLayout.addWidget(info_c)
 
@@ -110,7 +131,37 @@ class SettingInterface(QFrame):
         self.initInterface()
 
     def initInterface(self):
-        pass
+        mainLayout = VBoxLayout(self)
+        mainLayout.setAlignment(Qt.AlignmentFlag.AlignTop)
+        theme_setcard = OptionsSettingCard(
+            qconfig.themeMode,
+            FluentIcon.BRUSH,
+            "应用主题",
+            "调整你的应用外观",
+            texts=["浅色", "深色", "跟随系统设置"],
+            parent=self
+        )
+        updatecard = PushSettingCard(
+            "检测更新",
+            FluentIcon.UPDATE,
+            "检测更新",
+            "检测EggyUI Center的更新",
+            self
+        )
+        updatecard.button.clicked.connect(lambda : print("Hi"))
+        helpcard = HyperlinkCard(
+            url="https://eggyui.mysxl.cn/eggyui",
+            text="打开EggyUI官网",
+            icon=FluentIcon.HELP,
+            title="帮助",
+            content="其他EggyUI(-RE)内容",
+            parent=self
+        )
+
+        mainLayout.addWidget(theme_setcard)
+        mainLayout.addWidget(updatecard)
+        mainLayout.addWidget(helpcard)
+        theme_setcard.show()
 
 
 if __name__ == '__main__':
