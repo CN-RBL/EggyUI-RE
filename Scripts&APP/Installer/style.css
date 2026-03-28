@@ -1,0 +1,11 @@
+@font-face {
+    font-family: 'EggyFont';
+    src: url('ef.TTF') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    font-family: 'EggyFont', sans-serif;
+    font-size: larger;
+}

@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
-requests==2.32.5
-PyQt6-Fluent-Widgets[full]==1.10.5
-rich==14.2.0
-nuitka
-pyinstaller
+requests>=2.32.5
+PyQt6-Fluent-Widgets[full]>=1.10.5
+rich>=14.2.0
+nuitka>=4.0.7

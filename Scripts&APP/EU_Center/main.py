@@ -7,7 +7,7 @@ from PyQt6.QtGui import QIcon
 from PyQt6.QtWidgets import QApplication, QFrame, QSizePolicy, QListWidgetItem, QTableWidgetItem, QAbstractItemView, \
     QHeaderView
 from qfluentwidgets import *
-import requests
+# import requests
 
 __version__ = "vRE 1.0.0.Beta"
 
