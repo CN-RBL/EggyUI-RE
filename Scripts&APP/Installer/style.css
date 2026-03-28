@@ -8,4 +8,34 @@
 body {
     font-family: 'EggyFont', sans-serif;
     font-size: larger;
+    background-image: url('bg.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+button {
+    font-family: 'EggyFont', sans-serif;
+    font-size: larger;
+    background: linear-gradient(to right, #defb00, #fed71d, #fea81d);
+    color: black;
+    padding: 15px 15px;
+    border-radius: 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    box-shadow: none;
+    transition: box-shadow 0.6s ease;
+}
+
+button:hover {
+    box-shadow: 0 0 10px #fed71d inset, 0 0 30px #fed71d;
+}
+
+a {
+    position: absolute;
+    right: 80px;
 }

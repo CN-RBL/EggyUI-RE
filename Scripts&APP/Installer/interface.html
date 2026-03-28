@@ -6,8 +6,22 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>欢迎！</h1>
-    <p>欢迎使用 EggyUI-RE 1.0 安装向导！</p>
-    <p>只需要几个简单的步骤即可对你正在运行的操作系统 <strong>施加</strong> EggyUI-RE 1.0 美化</p>
+    <div id="home">
+        <h1>欢迎！</h1>
+        <p>欢迎使用 EggyUI-RE 1.0 安装向导！</p>
+        <p>只需要几个简单的步骤即可对你正在运行的操作系统 <strong>安装</strong> EggyUI-RE 1.0 组件</p>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <a href="#install" onclick="document.getElementById('home').style.display='none';document.getElementById('install').style.display='block';">
+            <button><strong>安装</strong></button>
+        </a>
+    </div>
+    <div id="install" style="display: none;">
+        <h1>安装</h1>
+        <p>正在安装 EggyUI-RE 1.0</p>
+        <p id="status">状态：</p>
+    </div>
 </body>
 </html>
