@@ -22,11 +22,11 @@ class MainWindow(MSFluentWindow):
         self.initUI()
 
     def initUI(self):
-        self.addSubInterface(MainInterface(), FluentIcon("Home"), "Home")
+        self.addSubInterface(MainInterface(), FluentIcon("Home"), "首页")
         self.addSubInterface(GloPMInterface(), FluentIcon("Application"), "GLO PM")
-        self.addSubInterface(FeedbackInterface(), FluentIcon("Feedback"), "Feedback",
+        self.addSubInterface(FeedbackInterface(), FluentIcon("Feedback"), "反馈",
                              position=NavigationItemPosition.BOTTOM)
-        self.addSubInterface(SettingInterface(), FluentIcon("Setting"), "Setting",
+        self.addSubInterface(SettingInterface(), FluentIcon("Setting"), "设置",
                              position=NavigationItemPosition.BOTTOM)
 
 
@@ -41,16 +41,16 @@ class MainInterface(QFrame):
         mainLayout.setAlignment(Qt.AlignmentFlag.AlignTop)
 
         news_c = HeaderCardWidget(self)
-        news_c.setTitle("News")
+        news_c.setTitle("新闻")
         no_news_l = BodyLabel(news_c)
-        no_news_l.setText("No News")
+        no_news_l.setText("暂时没有新闻")
         news_c.viewLayout.addWidget(no_news_l)
         news_c.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Fixed)
 
         mainLayout.addWidget(news_c)
 
         info_c = HeaderCardWidget(self)
-        info_c.setTitle("Info")
+        info_c.setTitle("信息")
         info_c.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Fixed)
         infos: list = [["操作系统版本", f"{platform.system()} {platform.release()}"], ["Python 版本", platform.python_version()], ["Center 版本", __version__]]
         if infos:

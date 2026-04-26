@@ -2,8 +2,19 @@
 <html lang="zh-cn">
 <head>
     <meta charset="UTF-8">
-    <title>EggyUI-RE 1.0 Installer</title>
+    <title>EggyUI-RE 1.0 安装程序</title>
     <link rel="stylesheet" href="style.css">
+    <script src="qwebchannel.js"></script>
+    <script>
+        var calls;
+        new QWebChannel(qt.webChannelTransport, function(channel) {
+            calls = channel.objects.calls;
+            console.log("WebChannel 已就绪");
+        });
+        function set_status(text) {
+            document.getElementById("status").innerText = "状态：" + text;
+        }
+    </script>
 </head>
 <body>
     <div id="home">
@@ -14,7 +25,7 @@
         <br/>
         <br/>
         <br/>
-        <a href="#install" onclick="document.getElementById('home').style.display='none';document.getElementById('install').style.display='block';">
+        <a href="#install" onclick="document.getElementById('home').style.display='none';document.getElementById('install').style.display='block';calls.start_install();">
             <button><strong>安装</strong></button>
         </a>
     </div>

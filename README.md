@@ -1,6 +1,6 @@
 # Eggy UI - RE
 
-![Python 版本](https://img.shields.io/badge/Python-3&#46;12&#46;7-brightgreen) ![Windows 版本](https://img.shields.io/badge/Windows-11-blue) ![状态](https://img.shields.io/badge/状态-Dev-brightgreen)
+![Python 版本](https://img.shields.io/badge/Python-3&#46;14&#46;2-brightgreen) ![Windows 版本](https://img.shields.io/badge/Windows-11-blue) ![状态](https://img.shields.io/badge/状态-Dev-yellow) ![QQ群](https://img.shields.io/badge/QQ群-1079576546-orange)
 
 > Eggy UI 重置版
 
@@ -13,8 +13,8 @@
 > [!NOTE]
 > **重要说明**
 >
-> 1. **项目状态**：此项目目前为 Dev 状态
-> 2. **平台限制**：此项目仅支持 Windows 11 ，对于安卓手机，可安装 Eggy UI for Android
+> 1. **项目状态**：此项目目前为 Dev （开发） 状态
+> 2. **平台限制**：此项目~~仅~~支持 Windows 11 ，对于安卓手机，可安装 Eggy UI for Android
 > 3. **粉丝创作**：此项目为一群热爱《蛋仔派对》的粉丝二创，禁止用于商业用途
 > 4. **素材来源**：
 >     - 未使用游戏解包/拆包素材
@@ -33,7 +33,7 @@
 
 **开发：**
 
-- Python：3.12.7
+- Python：3.14.2
 - 依赖库：（见 requirement.txt ）
 
 **使用：**
@@ -41,12 +41,14 @@
 - 系统：Windows 11
 - 具有网络连接
 
+> 以下内容**随时**都会更改，如有需要，请加QQ群1079576546进行询问！
+
 ## 构建
 
-1. 安装 Python 3.12.7 ，并准备好空的虚拟环境
+1. 安装 Python 3.14.2 ，并准备好空的虚拟环境
 2. 安装依赖（ pip intall -r requirements.txt ）
-3. 运行 build.py all
-4. 查看 dist 文件夹
+3. ~~运行 build.py all~~
+4. ~~查看 dist 文件夹~~
 
 ## 安装
 

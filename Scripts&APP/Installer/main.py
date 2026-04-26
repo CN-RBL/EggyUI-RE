@@ -1,9 +1,23 @@
 import sys
 import os
+
+from PyQt6.QtWebChannel import QWebChannel
+from PyQt6.QtWebEngineCore import QWebEnginePage
 from PyQt6.QtWidgets import QApplication, QMainWindow, QVBoxLayout, QWidget
-from PyQt6.QtCore import QUrl, Qt
+from PyQt6.QtCore import QUrl, Qt, QObject, pyqtSlot
 from PyQt6.QtWebEngineWidgets import QWebEngineView
 from PyQt6.QtGui import QContextMenuEvent
+
+
+class Calls(QObject):
+    def __init__(self, page: QWebEnginePage):
+        super().__init__()
+        self.page = page
+
+    @pyqtSlot()
+    def start_install(self):
+        self.page.runJavaScript("set_status('<Python 后端接入成功>')")
+        # TODO
 
 
 # 自定义 WebEngineView，禁用右键菜单
@@ -17,7 +31,7 @@ class LocalWebApp(QMainWindow):
     def __init__(self):
         super().__init__()
 
-        self.setWindowTitle("EggyUI-RE 1.0 Installer")
+        self.setWindowTitle("EggyUI-RE 1.0 安装程序")
         self.setFixedSize(700, 500)
         self.setWindowFlags(self.windowFlags() & ~Qt.WindowType.WindowMinMaxButtonsHint)
 
@@ -38,6 +52,11 @@ class LocalWebApp(QMainWindow):
 
         # 加载同目录下的 interface.html
         self.load_interface_html()
+
+        self.channel = QWebChannel()
+        self.calls = Calls(self.web_view.page())
+        self.channel.registerObject("calls", self.calls)
+        self.web_view.page().setWebChannel(self.channel)
 
         # 将 Web 视图添加到布局
         layout.addWidget(self.web_view)
