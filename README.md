@@ -4,6 +4,8 @@
 
 > Eggy UI 重置版
 
+![Stone Badge](https://stone.professorlee.work/api/stone/CN-RBL/EggyUI-RE)
+
 ## 前言
 
 ### 简介
