@@ -1,7 +1,9 @@
 # -*- coding: utf-8 -*-
 
-# requests>=2.32.5
+# Python >= 3.14.2
 PyQt6-Fluent-Widgets[full]>=1.11.2
 PyQt6-WebEngine>=6.11.0
+nicegui>=3.11.1
+psutil>=7.2.2
 rich>=14.3.4
 nuitka>=4.0.8

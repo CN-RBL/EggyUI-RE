@@ -14,10 +14,13 @@ class Calls(QObject):
         super().__init__()
         self.page = page
 
+    def set_status(self, text: str):
+        self.page.runJavaScript(f"set_status('{text}')")
+
     @pyqtSlot()
     def start_install(self):
-        self.page.runJavaScript("set_status('<Python 后端接入成功>')")
-        # TODO
+        self.set_status("<Python后端接入成功>")
+        self.set_status("搜集信息")
 
 
 # 自定义 WebEngineView，禁用右键菜单
@@ -72,5 +75,7 @@ class LocalWebApp(QMainWindow):
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     window = LocalWebApp()
+    window.hide()
+    __import__("time").sleep(0.1)  # 预留加载时间
     window.show()
     sys.exit(app.exec())
