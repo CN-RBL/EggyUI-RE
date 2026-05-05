@@ -21,6 +21,7 @@ class Calls(QObject):
     def start_install(self):
         self.set_status("<Python后端接入成功>")
         self.set_status("搜集信息")
+        self.page.runJavaScript("alert('111')")
 
 
 # 自定义 WebEngineView，禁用右键菜单
